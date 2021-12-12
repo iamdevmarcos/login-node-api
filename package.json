@@ -1,0 +1,41 @@
+{
+  "name": "login-node-api",
+  "version": "1.0.0",
+  "description": "🔒 server of login system, backend with Node.Js and TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -e ts,json src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamdevmarcos/login-node-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamdevmarcos/login-node-api/issues"
+  },
+  "homepage": "https://github.com/iamdevmarcos/login-node-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nodemailer": "^6.7.2",
+    "passport": "^0.5.0",
+    "passport-http": "^0.3.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.11.12",
+    "@types/nodemailer": "^6.4.4",
+    "@types/passport": "^1.0.7",
+    "@types/passport-http": "^0.3.9",
+    "@types/validator": "^13.7.0",
+    "prisma": "^3.6.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.3"
+  }
+}
