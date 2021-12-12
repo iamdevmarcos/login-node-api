@@ -15,11 +15,14 @@ export const mail = async (req: Request, res: Response) => {
     
         const message = {
             from: 'nao-responda@imarcos.com',
-            to: 'marcosdev.me@gmail.com',
+            to: 'Marcos Andre <marcosdev.me@gmail.com>',
             replyTo: req.body.from,
             subject: req.body.subject,
             html: `<strong>${req.body.email}</strong>`,
-            text: req.body.email
+            text: req.body.email,
+            headers: {
+                priority: 'high'
+            }
         }
     
         try {
