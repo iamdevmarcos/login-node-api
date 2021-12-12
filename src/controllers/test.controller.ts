@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
 import nodemailer from 'nodemailer';
-import * as EmailValidator from 'email-validator'; 
+import * as EmailValidator from 'email-validator';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const mail = async (req: Request, res: Response) => {
     const { from, subject, email } = req.body;
@@ -11,8 +14,8 @@ export const mail = async (req: Request, res: Response) => {
             const transport = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'empty',
-                    pass: 'empty'
+                    user: process.env.SMTP_USER,
+                    pass: process.env.SMPT_PASS
                 }
             });
         
