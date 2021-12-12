@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/iamdevmarcos/login-node-api#readme",
   "dependencies": {
+    "@prisma/client": "^3.6.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "email-validator": "^2.0.4",
