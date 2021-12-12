@@ -7,6 +7,7 @@ const router = Router();
 
 router.post('/test', TestController.mail);
 
+router.get('/users', UserController.getAll);
 router.post('/auth/login', UserController.login);
 router.post('/auth/register', UserController.register);
 
