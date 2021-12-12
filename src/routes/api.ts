@@ -5,7 +5,7 @@ import * as TestController from '../controllers/test.controller';
 
 const router = Router();
 
-router.post('/test', TestController.mail);
+router.get('/test', TestController.mail);
 
 router.post('/auth/login', UserController.login);
 router.post('/auth/register', UserController.register);

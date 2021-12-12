@@ -19,10 +19,7 @@ export const mail = async (req: Request, res: Response) => {
             replyTo: req.body.from,
             subject: req.body.subject,
             html: `<strong>${req.body.email}</strong>`,
-            text: req.body.email,
-            headers: {
-                priority: 'high'
-            }
+            text: req.body.email
         }
     
         try {
