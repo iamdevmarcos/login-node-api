@@ -11,8 +11,8 @@ export const mail = async (req: Request, res: Response) => {
             const transport = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'themindsetispowerfull@gmail.com',
-                    pass: 'mindset6813fc!@$'
+                    user: 'empty',
+                    pass: 'empty'
                 }
             });
         
