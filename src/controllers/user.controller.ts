@@ -14,6 +14,7 @@ export const login = async (req: Request, res: Response) => {
         const password: string = req.body.password;
 
         const emailChecked = EmailValidator.validate(email);
+        
         if(emailChecked) {
             const user = await User.findOne({email, password});
 
@@ -34,7 +35,7 @@ export const register = async (req: Request, res: Response) => {
         const { name, email, password } = req.body;
 
         const emailChecked = EmailValidator.validate(email);
-
+        
         if(emailChecked) {
             const hasUser = await User.findByEmail(email);
 
