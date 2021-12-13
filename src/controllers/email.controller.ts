@@ -21,7 +21,7 @@ export const mail = async (data: Props) => {
         from: 'nao-responda@imarcos.com',
         to: `${data.email}`,
         subject: 'Activate your account',
-        html: `<strong>Hey ${data.name}</strong>, activate your account right now by clicking here`,
+        html: `Hey <strong>${data.name}</strong>, activate your account right now by clicking here`,
         text: `Hey ${data.name}, activate your account right now by clicking here`
     }
 
