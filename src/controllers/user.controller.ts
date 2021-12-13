@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { User } from '../services/User';
+import * as EmailValidator from 'email-validator';
 
 export const getAll = async (req: Request, res: Response) => {
     const user = await User.findAll();
@@ -11,12 +12,16 @@ export const login = async (req: Request, res: Response) => {
         const email: string = req.body.email;
         const password: string = req.body.password;
 
-        const user = await User.findOne({email, password});
+        const emailChecked = EmailValidator.validate(email);
+        if(emailChecked) {
+            const user = await User.findOne({email, password});
 
-        if(user) {
-            console.log("user", user);
-            res.json({ status: true });
-            return;
+            if(user) {
+                res.json({ status: true });
+                return;
+            }
+        } else {
+            res.json({ error: "incorrect email" });
         }
     }
 
@@ -27,15 +32,22 @@ export const register = async (req: Request, res: Response) => {
     if(req.body.name && req.body.email && req.body.password) {
         const { name, email, password } = req.body;
 
-        const hasUser = await User.findByEmail(email);
-        if(!hasUser) {
-            const newUser = await User.create({name, email, password});
+        const emailChecked = EmailValidator.validate(email);
 
-            res.status(201).json({ status: true, user: newUser });
+        if(emailChecked) {
+            const hasUser = await User.findByEmail(email);
+
+            if(!hasUser) {
+                const newUser = await User.create({name, email, password});
+
+                res.status(201).json({ status: true, user: newUser });
+            } else {
+                res.json({ error: "email is already being used" });
+            }
         } else {
-            res.json({ error: "e-mail já sendo usado" });
+            res.json({ error: "incorrect email" });
         }
     }
 
-    res.json({ error: 'Dados não enviados.' });
+    res.json({ error: 'unset data' });
 }
