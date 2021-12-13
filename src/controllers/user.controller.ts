@@ -32,6 +32,8 @@ export const register = async (req: Request, res: Response) => {
             const newUser = await User.create({name, email, password});
 
             res.status(201).json({ status: true, user: newUser });
+        } else {
+            res.json({ error: "e-mail já sendo usado" });
         }
     }
 
