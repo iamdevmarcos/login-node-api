@@ -31,6 +31,11 @@ export const User = {
             where: { email }
         });
     },
+    findById: async (id: string) => {
+        return await prisma.user.findUnique({
+            where: { id: parseInt(id) }
+        });
+    },
     create: async (data: RegisterProps) => {
         return await prisma.user.create({
             data: {
