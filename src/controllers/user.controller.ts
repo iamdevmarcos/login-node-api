@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { User } from '../services/User';
 import * as EmailValidator from 'email-validator';
+import * as EmailController from './email.controller';
 
 export const getAll = async (req: Request, res: Response) => {
     const user = await User.findAll();
@@ -39,6 +40,7 @@ export const register = async (req: Request, res: Response) => {
 
             if(!hasUser) {
                 const newUser = await User.create({name, email, password});
+                await EmailController.mail({name, email});
 
                 res.status(201).json({ status: true, user: newUser });
             } else {
